@@ -1,0 +1,61 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+/* Write your additonal styles below */
+
+body{
+	height: 100vh;
+	width: 100vw;
+}
+
+#container{
+	height: 100%;
+	width: 100%;
+}
+
+#building-list-panel{
+	position: fixed;
+	top: 20px;
+	left: 100px;
+	z-index: 1000;
+	padding: 8px 10px;
+	background: rgba(255,255,255,0.8);
+}
+
+
+#building-search{
+	padding: 5px 3px;
+	width: 200px;
+}
+
+#building-list-form{
+	max-height: 350px;
+	margin-top: 15px;
+	overflow-y: scroll;
+	width: 215px;
+}
+
+#building-list-form div{
+	width: 190px;
+	padding: 5px;
+	border-top: 1px #aaa solid;
+}
+
+#building-list-form div:hover{
+	background: rgba(50,150,255,0.3);
+}
+
+#building-list-form input{
+	margin-right: 5px;
+}
+
+.hidden{
+	display: none;
+}
+
+.selected{
+	background: rgba(50,150,255,0.7);
+}
+

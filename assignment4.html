@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- For mobile viewing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+    <style>
+        * {
+          text-align: justify;
+      }
+      .container {
+        max-width: 800px;
+        margin-bottom: 50px;
+    }
+    .img-responsive {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        max-width: 90%;
+        max-height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .due {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 20px;
+        color: grey;
+    }
+    header {
+        margin-bottom: 20px;
+    }
+    h2 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 28px;
+    }
+    p, li {
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .panel > .panel-heading {
+        background-color: black;
+        color: white;
+    }
+    em {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>CS349 Assignment 4</h1>
+            <span class="due">Due: July 24 (Friday), 5PM EST</span>
+        </header>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Assignment Goals</h2>
+            </div>
+            <div class="panel-body">
+                <p>
+                    In this assignment, you will be able to
+                </p>
+
+                <ul>
+                    <li>
+                        Learn the basics of web development tools such as <code>grunt</code>, <code>bower</code>, <code>yo</code>, and <code>jshint</code>, etc.
+                    </li>
+                    <li>
+                        Build a front-end web application that communicates with web services.
+                    </li>
+                    <li>
+                        Further hone the skills of using the MVC architecture.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h2>Assignment Overview</h2>
+          </div>
+          <div class="panel-body">
+            <p>In this assignment, you will create a web application called <i>Waterloc</i>.</p>
+            <p>Waterloc is a web application that helps search and locate buildings at University of Waterloo.</p>
+            <p>
+            The application is comprised of a full-size map and a building list. The map will be geolocated to show the main campus. The scrollable building list will display all the buildings in the university. Users can check a building to mark its location in the map or uncheck a building to make the marker disappear. Users can also search from the list with the building name or the building code to quickly find a building. </p>
+            <p>
+            A video is probably worth millions of words:
+            </p>
+            <br/>
+            <div class="text-center">
+                <iframe width="640" height="480" src="https://www.youtube.com/embed/-vGb_x8gdZ0?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p>Note: If you are having trouble playing the above video, try this link: <a href="https://youtu.be/-vGb_x8gdZ0">https://youtu.be/-vGb_x8gdZ0</a></p>
+          </div>
+      </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Specifications</h2>
+        </div>
+        <div class="panel-body">
+            <p>In this assignment, you should satisfy the following requirements:</p>
+            <ul>
+            <li>The system is a single-page desktop web application that runs on the latest Google Chrome. </li>
+            <li>The system should show a Google Map ("the map"), spanning the whole browser view port.</li>
+            <li>When the system is loaded, the map should show Davis Centre at the centre of the screen.</li>
+            <li>The system should have a panel ("the building list panel") hovering upon the top-left corner (with reasonable margins) of the map.</li>
+            <li>The building list panel should have a search field ("the search field") in the head and a full list ("the building list") of University of Waterloo buildings in the body.</li>
+            <li>The building list should be vertically scrollable.</li>
+            <li>Each item in the building list should start with a checkbox, followed by the full name of the building, followed by the building code wrapped with a pair of parentheses.</li>
+            <li>When the user clicks on an item in the building list, it should toggle the checkbox and highlight/unhighlight the background of the item. A marker should be set/unset in the map to show the location of the building.</li>
+            <li>When the text in the search field changes, the building list should change immediately to partially match the text. A good way of doing that is to use the RegExp object. For example, if the user is searching 'abc', you should generate a RegExp object that looks for <code>/.*a.*b.*c.*/</code>. </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2>Implementation Details</h2>
+          </div>
+          <div class="panel-body">
+            <h3>Setup</h3>
+            <p><a href="./guides/yeoman.html" target="_new_tab"><span class="label label-success">Click here to read guide for Setup Yeoman Workflow</span></a> </p>
+            <p>In this assignment, we will use the Yeoman Workflow to develop our web application. See the guide for detailed instructions on how to install the required dependencies. You do <em>not</em> need to make any change to the framework; you just need to install it and use it to run the server. Details on using the framework are described below.</p>
+            <hr>
+            <h3>Structures</h3>
+            <p>Once you have setup the framework, you should write code in the <code>app</code> folder: </p>
+            <ul>
+                <li><code>app/index.html</code> is the main entry of the web application.</li>
+                <li><code>app/images</code> is where you store the images.</li>
+                <li><code>app/styles</code> is where you write the stylesheet files.</li>
+                <li><code>app/scripts</code> is where you write JavaScript files.</li>
+            </ul>
+            <hr>
+            <h3>Commands</h3>
+            <p><a href="./guides/commands.html" target="_new_tab"><span class="label label-success">Click here to read guide for Commands in Yeoman Workflow</span></a> </p>
+            <p>When using the framework, there are only four commands that you need to know about:</p>
+            <ul>
+                <li><code>grunt build</code> for building the project.</li>
+                <li><code>grunt serve</code> for starting the server.</li>
+                <li><code>grunt jshint</code> for linting syntax errors in JavaScript.</li>
+                <li><code>bower install --save &lt;dependency_name&gt;</code> for installing new dependencies.</li>
+            </ul>
+            <hr>
+            <h3>Using Closures for Module Pattern</h3>
+               <p><a href="./guides/module.html" target="_new_tab"><span class="label label-success">Click here to read guide for Module Pattern with Closures</span></a> </p> 
+            <p>In this assignment, you should use closures to implement the Module Pattern. We have outlined this in the starter code. You may modify the dependencies as your project goes. </p>
+            <p>In the starter code, we have four files corresponding to four modules: </p>
+            <ul>
+                <li><code>app/scripts/main.js</code> is the main entry of the scripts.</li>
+                <li><code>app/scripts/models.js</code> defines the <code>ModelModule</code> housing all the models</code>.</li>
+                <li><code>app/scripts/views.js</code> defines the <code>ViewModule</code> housing all the views (and controllers).</li>
+                <li><code>app/scripts/services.js</code> defines the <code>ServiceModule</code> housing all the services.</li>
+            </ul>
+            <hr>
+            <h3>Applying MVC for Separating Concerns</h3>
+            <p>In this assignment, you should use the Model-View-Controller Architecture to separate concerns.</p>
+            <h4>Models</h4>
+            <p>In <code>models.js</code>, we have abstracted out the common routines in the models as <code>AbstractModel</code>. In addition to that, we've outlined a <code>BuildingModel</code> and <code>BuildingListModel</code> for you. You are free to add other model classes as the project goes.</p>
+            <h4>Views</h4>
+            <p>Similarly, in <code>views.js</code>, we have outlined a abstracted view class, <code>AbstrctView</code>, and two concrete view classes, <code>BuildingListView</code> and <code>MapView</code>.</p>
+            <hr>
+            <h3>Wiring Up Services</h3>
+
+            <h4>APIs</h4>
+            <p>You will need to use two APIs:</p>
+            <ul>
+                <li><a target="_new_tab" href="https://developers.google.com/maps/">JavaScript or HTTP APIs of Google Map</a>: used to generate the map and markers.</li>
+                <li><a target="_new_tab" href="https://api.uwaterloo.ca/">HTTP APIs of University of Waterloo</a>: used to find building names and geo-location data.</li>
+            </ul>
+            <p>You need to read the documentations of these APIs and figure out how to use them by yourself. All communications with the web services should be in the form of AJAX calls. In any case, you should not need to refresh the page to see changes.</p>
+            <p>You will typically acquire an API key from the service provider to access the APIs. Methods of acquiring a key will typically be documented. </p>
+            <h4>Encapsulating Low-Level Requests</h4>
+            <p>For HTTP APIs, you will need to write a <code>Service</code> class to hide the details of low-level HTTP request and response handling. You should expose methods that provide other modules with only high-level descriptions, e.g., <code>queryBuildings()</code> and <code>getBuilding(code)</code>, etc. These services should be placed in <code>app/scripts/services.js</code>.</p>
+            <h4>Handling Asynchronous Function Calls </h4>
+            <p><a href="./guides/async.html" target="_new_tab"><span class="label label-success">Click here to read guide for Callbacks and Promises</span></a> </p>
+            <p>Retrieving data over the Internet is asynchronous, meaning that you can't get your result right away, and you don't know if the function is going to succeed, fail, or timeout. There are two ways of handling asynchronous function calls: the old way is to use callbacks and the new way is to use promises. We recommend you to use promises in this assignment, but you are free to use callbacks.</em></p>
+        <hr>
+          <h3>Stylesheets</h3>
+          <p>You will use <a href="http://sass-lang.com/">SASS</a> to compile a more maintainable stylesheet format called SCSS.</p>
+          <p>The framework has already been taking care of the compilation. Every time you use <code>grunt serve</code> or <code>grunt build</code>, the SCSS files under <code>app/styles</code> will be compiled to CSS and injected to the <code>app/index.html</code>.</p> 
+          <p>This format is compatible with CSS. </p>
+          <hr>
+          <h3>Linting Syntax Errors</h3>
+          <p>We will use <code>grunt jshint</code> to test your code. There shouldn't be any warning or error in your code. </p> 
+          <p>At the root of directory, there's a file <code>.jshintrc</code> which defines the rules when linting syntax errors with JSHint (<a href="http://jshint.com/docs/">more</a>). You should not need to modify most of the file.</p>
+          <p>The only attribute that you may need to modify is <code>globals</code>. JSHint lints JavaScript files one by one. It does not know the relations between different JavaScript files. When importing modules (e.g. <code>ViewModule</code>, <code>ModelModule</code>, <code>ServiceModule</code>, and <code>google</code>), it recognizes the module name as undefined, you should put module names into the <code>globals</code> attribute.</p>
+          <hr>
+          <h3>External Libraries</h3>
+          <p>You should study the following libraries carefully in order to implement your project:</p>
+          <ul>
+            <li><a href="https://developers.google.com/maps/documentation/javascript/">Google Map JavaScript API</a>: If you choose to use Google Map's JavaScript API, you could import this library. You may also opt to use its <a href="https://developers.google.com/maps/documentation/webservices/">HTTP API</a> and wire it up for use as a service.</li>
+          </ul>
+          <p>You may find the following libraries helpful, but you can safely ignore:</p>
+          <ul>
+            <li><a href="http://underscorejs.org/">Underscore</a> or <a href="https://lodash.com/">LoDash</a>.</li>
+            <li><a href="https://jquery.com/">jQuery</a>: It simplifies many native JavaScript functions. You will find this library saving much labour. You may want to use it to manipulate DOM elements and handle AJAX requests.</li>
+            <li><a href="https://github.com/kriskowal/q">Q</a>: The library provides an implementation of the JavaScript promise.</li>
+            <li><a href="http://getbootstrap.com/">Twitter Bootstrap</a>: The CSS framework has already been included in the starter code.</li>
+            <li>Other libraries that have included in <code>package.json</code> and <code>bower.json</code> in the starter code.</li>
+          </ul>
+          <p>Except the Google Map JavaScript API, you are supposed to pull any other external libraries using: </p>
+          <pre>bower install --save &lt;libray_name&gt;</pre>
+          <p>You may also remove a library using</p>
+          <pre>bower uninstall --save &lt;libray_name&gt;</pre>
+          <p><em>You should not use any other libraries than the above.</em></p>
+          </div>
+      </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Marking</h2>
+        </div>
+        <div class="panel-body">
+        <p>We are going to use <code>grunt serve</code> to run the server and look at whether specifications have been satisfied. In our computer, we will have <code>node.js</code>, <code>grunt-cli</code>, <code>npm</code>, <code>compass</code>, <code>bower</code> installed. But we won't try to pull down any dependencies that you have defined.</p>
+        <p><em>In other words, your submission should have dependencies already included.</em></p>
+        <p>In addition to that, you should not have any warning or error when we run <code>grunt jshint</code>.</p>
+        <p>We will also see if your interface design is the same or better than the video. </p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>How to Submit</h2>
+        </div>
+        <div class="panel-body">
+            <p>
+                You will use subversion to both check out and submit your assignment. Details can be found on the
+                <a href="https://hci.cs.uwaterloo.ca/courses/CS349/s15/about.html#svn">course website</a>.
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
